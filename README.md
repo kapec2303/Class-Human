@@ -34,8 +34,9 @@ class Student : public Human {
 private:
     int classid = 9;
     string name;
+    int RAU = 4;
 public:
-    Student(int height, int weight, int classid, string name) : Human(height, weight), classid(classid), name(name) {}
+    Student(int height, int weight, int classid, string name, int RAU) : Human(height, weight), classid(classid), name(name), RAU(RAU) {}
 
     void Hello() override {
         cout << "Hello, I'm in " << classid << "th grade" << endl;
@@ -47,6 +48,14 @@ public:
 
     const string &getName() const {
         return name;
+    }
+
+    void setRau(int rau) {
+        RAU = rau;
+    }
+
+    int getRau() const {
+        return RAU;
     }
 };
 
@@ -70,8 +79,6 @@ public:
 
     int getAge() const {
         return age;
-        
-        
     }
 
     void setName(const string &name) {
@@ -82,12 +89,26 @@ public:
         Worker::age = age;
     }
 };
+
+class Teacher : Worker {
+public:
+    Teacher(int height, int weight, const string &name, int age) : Worker(height, weight, name, age) {}
+
+    void Ask(Student pupil) {
+        cout << "Sorry, komissiya tebya zhdet" << endl;
+        int a = pupil.getRau();
+        a -= 1;
+        pupil.setRau(a);
+    }
+};
 int main() {
 Human Petya;
-Student Vasya(190 ,90, 11, "Vasiliy");
+Student Vasya(190 ,90, 11, "Vasiliy", 5);
 Petya.Hello();
 Vasya.Hello();
 Parent Mama;
 Mama.Hello(Vasya);
-
+Teacher StrogiyTip(180, 90, "Professor", 40);
+StrogiyTip.Ask(Vasya);
+cout << "Now " << Vasya.getName() << " has " << Vasya.getRau() << " RAU :(" << endl;
 }

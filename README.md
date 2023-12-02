@@ -57,6 +57,31 @@ public:
     }
 };
 
+class Worker : public Human {
+private:
+    string name;
+    int age;
+public:
+    Worker(int height, int weight, const string &name, int age) : Human(height, weight), name(name), age(age) {}
+
+    const string &getName() const {
+        return name;
+    }
+
+    int getAge() const {
+        return age;
+        
+        
+    }
+
+    void setName(const string &name) {
+        Worker::name = name;
+    }
+
+    void setAge(int age) {
+        Worker::age = age;
+    }
+};
 int main() {
 Human Petya;
 Student Vasya(190 ,90, 11, "Vasiliy");
@@ -64,4 +89,5 @@ Petya.Hello();
 Vasya.Hello();
 Parent Mama;
 Mama.Hello(Vasya);
+
 }

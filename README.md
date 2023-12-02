@@ -50,6 +50,10 @@ public:
         return name;
     }
 
+    void setName(const string &name) {
+        Student::name = name;
+    }
+
     void setRau(int rau) {
         RAU = rau;
     }
@@ -63,6 +67,12 @@ class Parent : public Human {
 public:
     void Hello(Student b){
         cout << "Hello, my kid is " << b.getName() << endl;
+    }
+    void Rename(Student b) {
+        string a;
+        cin >> a;
+        b.setName(a);
+        cout << "Now this kid is called " << b.getName() << endl;
     }
 };
 
@@ -111,4 +121,5 @@ Mama.Hello(Vasya);
 Teacher StrogiyTip(180, 90, "Professor", 40);
 StrogiyTip.Ask(Vasya);
 cout << "Now " << Vasya.getName() << " has " << Vasya.getRau() << " RAU :(" << endl;
+Mama.Rename(Vasya);
 }
